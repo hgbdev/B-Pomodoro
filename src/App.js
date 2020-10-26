@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import HomeScreen from './UI_Components/HomeScreen';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'reactjs-popup/dist/index.css';
+
+const electron = window.require('electron');
+const ipcRenderer = electron.ipcRenderer;
 
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
@@ -15,6 +21,8 @@ function App() {
   );
 
   useEffect(() => {
+    ipcRenderer.send('asynchronous-message', 'ping');
+
     function handleResize() {
       setWindowDimensions(getWindowDimensions());
     }
@@ -25,18 +33,16 @@ function App() {
 
   return (
     <div
+      className="main-container"
       style={{
+        fontFamily: 'Lobster',
         backgroundImage:
-          'url("https://i.pinimg.com/564x/3f/a5/78/3fa57893038a432b098c632a82fef1bb.jpg")',
-        backgroundSize: '100%',
-        backgroundPosition: 'center',
-        margin: 0,
-        padding: 0,
+          'url("https://images.pexels.com/photos/1034662/pexels-photo-1034662.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")',
         width: windowDimensions.width,
         height: windowDimensions.height,
       }}
     >
-      Hello World
+      <HomeScreen />
     </div>
   );
 }
