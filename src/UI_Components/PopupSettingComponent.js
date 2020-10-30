@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import Popup from 'reactjs-popup';
 import { Context } from './../Context/context';
 import { closeSetting } from './../Context/actions';
 import {
@@ -12,10 +11,23 @@ import {
   Button,
   Modal,
 } from 'react-bootstrap';
+import { ChromePicker } from 'react-color';
+const popover = {
+  position: 'absolute',
+  zIndex: '2',
+};
+const cover = {
+  position: 'fixed',
+  top: '0px',
+  right: '0px',
+  bottom: '0px',
+  left: '0px',
+};
 
 function PopupSettingComponent(props) {
   const {} = props;
   const [state, dispatch] = useContext(Context);
+  const [pickColorFont, setPickColorFont] = useState(false);
 
   const handleClose = () => {
     dispatch(closeSetting());
@@ -26,7 +38,123 @@ function PopupSettingComponent(props) {
       <Modal.Header closeButton>
         <Modal.Title>Setting</Modal.Title>
       </Modal.Header>
-      <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+      <Modal.Body>
+        <Form>
+          <Form.Group as={Row} controlId="background">
+            <Form.Label column sm="5">
+              Background:
+            </Form.Label>
+            <Col sm="7">
+              <Form.Control placeholder="(Link image backgorund)" />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="pomodoro">
+            <Form.Label column sm="5">
+              Pomorodo:
+            </Form.Label>
+            <Col sm="7">
+              <Form.Control placeholder="(Minutes)" />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="s_break">
+            <Form.Label column sm="5">
+              Short Break:
+            </Form.Label>
+            <Col sm="7">
+              <Form.Control placeholder="(Minutes)" />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="l_break">
+            <Form.Label column sm="5">
+              Long Break:
+            </Form.Label>
+            <Col sm="7">
+              <Form.Control placeholder="(Minutes)" />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="interval">
+            <Form.Label column sm="5">
+              Long Break Interval:
+            </Form.Label>
+            <Col sm="7">
+              <Form.Control placeholder="(Long Break Interval)" />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="auto_start">
+            <Form.Label column sm="5">
+              Auto start:
+            </Form.Label>
+            <Col sm="7">
+              <Form.Control as="select">
+                <option>Yes</option>
+                <option>No</option>
+              </Form.Control>
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="font">
+            <Form.Label column sm="5">
+              Font:
+            </Form.Label>
+            <Col sm="7">
+              <Form.Control as="select">
+                <option>Yes</option>
+                <option>No</option>
+              </Form.Control>
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="size_timmer">
+            <Form.Label column sm="5">
+              Size Timer:
+            </Form.Label>
+            <Col sm="7">
+              <Form.Control placeholder="(Long Break Interval)" />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="size_text">
+            <Form.Label column sm="5">
+              Size Text:
+            </Form.Label>
+            <Col sm="7">
+              <Form.Control placeholder="(Long Break Interval)" />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="size_border_text">
+            <Form.Label column sm="5">
+              Size border text:
+            </Form.Label>
+            <Col sm="7">
+              <Form.Control placeholder="(Long Break Interval)" />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="font_color">
+            <Form.Label column sm="5">
+              Font color:
+            </Form.Label>
+            <Col sm="7">
+              <Form.Control placeholder="(Long Break Interval)" />
+            </Col>
+          </Form.Group>
+          <ChromePicker onChangeComplete={() => console.log('zxczx')}/>
+          <Form.Group as={Row} controlId="border_text_color">
+            <Form.Label column sm="5">
+              Border text color:
+            </Form.Label>
+            <Col sm="7">
+              <Form.Control placeholder="(Long Break Interval)" />
+            </Col>
+          </Form.Group>
+        </Form>
+      </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
           Close
@@ -38,6 +166,8 @@ function PopupSettingComponent(props) {
     </Modal>
   );
 }
+
+
 
 PopupSettingComponent.propTypes = {};
 

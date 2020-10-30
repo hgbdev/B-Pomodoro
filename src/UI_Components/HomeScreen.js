@@ -7,11 +7,16 @@ import { Context } from './../Context/context';
 import MenuComponent from './MenuComponent';
 import PopupSettingComponent from './PopupSettingComponent';
 import { stopTimer } from '../Context/actions';
+const electron = window.require('electron');
+const ipcRenderer = electron.ipcRenderer;
 
 function HomeScreen(props) {
   const {} = props;
   const [state, dispatch] = useContext(Context);
-  useEffect(() => {}, [state]);
+  useEffect(() => {
+    ipcRenderer.send('asynchronous-message', { obj1: 'a', obj2: 'b' });
+
+  }, []);
 
   return (
     <>
