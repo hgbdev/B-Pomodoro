@@ -4,6 +4,7 @@ export const initialState = {
   time: 10,
   isStart: false,
   isOpenSetting: false,
+  isOpenModal: false,
 };
 
 const reducer = (state = initialState, action) => {

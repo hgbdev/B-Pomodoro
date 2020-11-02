@@ -7,6 +7,7 @@ import { Context } from './../Context/context';
 import MenuComponent from './MenuComponent';
 import PopupSettingComponent from './PopupSettingComponent';
 import { stopTimer } from '../Context/actions';
+
 const electron = window.require('electron');
 const ipcRenderer = electron.ipcRenderer;
 
@@ -14,13 +15,17 @@ function HomeScreen(props) {
   const {} = props;
   const [state, dispatch] = useContext(Context);
   useEffect(() => {
-    ipcRenderer.send('asynchronous-message', { obj1: 'a', obj2: 'b' });
-
-  }, []);
+    //ipcRenderer.send('asynchronous-message', { obj1: 'a', obj2: 'b' });
+    console.log(state.isOpenSetting);
+  }, [state.isOpenSetting]);
 
   return (
     <>
-      <div className="home-screen">
+      <div
+        className="home-screen"
+        style={{ display: state.isOpenSetting ? 'none' : null }}
+        onClick={() => console.log('zxczxc')}
+      >
         <TimerComponent
           isStart={state.isStart}
           minute={state.time}

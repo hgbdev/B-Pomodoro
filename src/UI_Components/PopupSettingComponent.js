@@ -11,30 +11,29 @@ import {
   Button,
   Modal,
 } from 'react-bootstrap';
-import { ChromePicker } from 'react-color';
-const popover = {
-  position: 'absolute',
-  zIndex: '2',
-};
-const cover = {
-  position: 'fixed',
-  top: '0px',
-  right: '0px',
-  bottom: '0px',
-  left: '0px',
-};
+import ColorPicker from 'rc-color-picker';
+import 'rc-color-picker/assets/index.css';
 
 function PopupSettingComponent(props) {
   const {} = props;
   const [state, dispatch] = useContext(Context);
-  const [pickColorFont, setPickColorFont] = useState(false);
 
   const handleClose = () => {
     dispatch(closeSetting());
   };
 
+  function changeHandler(colors) {
+    console.log(colors);
+  }
+
   return (
-    <Modal show={state.isOpenSetting} onHide={handleClose} centered>
+    <Modal
+      show={state.isOpenSetting}
+      onHide={handleClose}
+      centered
+      backdrop={false}
+      style={{ opacity: 0.1 }}
+    >
       <Modal.Header closeButton>
         <Modal.Title>Setting</Modal.Title>
       </Modal.Header>
@@ -141,10 +140,22 @@ function PopupSettingComponent(props) {
               Font color:
             </Form.Label>
             <Col sm="7">
-              <Form.Control placeholder="(Long Break Interval)" />
+              <div
+                style={{
+                  margin: '20px 20px 20px',
+                  textAlign: 'center',
+                }}
+              >
+                <ColorPicker
+                  animation="slide-up"
+                  color={'#36c'}
+                  onChange={changeHandler}
+                  style={{ position: 'absolute', zIndex: 10001 }}
+                />
+              </div>
             </Col>
           </Form.Group>
-          <ChromePicker onChangeComplete={() => console.log('zxczx')}/>
+
           <Form.Group as={Row} controlId="border_text_color">
             <Form.Label column sm="5">
               Border text color:
@@ -166,8 +177,6 @@ function PopupSettingComponent(props) {
     </Modal>
   );
 }
-
-
 
 PopupSettingComponent.propTypes = {};
 
