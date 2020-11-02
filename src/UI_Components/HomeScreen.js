@@ -16,11 +16,11 @@ function HomeScreen(props) {
   return (
     <>
       <div className="home-screen">
-        <TimerComponent
+        {/* <TimerComponent
           isStart={state.isStart}
           minute={state.time}
           stopTimer={() => dispatch(stopTimer())}
-        />
+        /> */}
         <MenuComponent />
         <PopupSettingComponent />
       </div>

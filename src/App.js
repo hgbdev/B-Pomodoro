@@ -37,7 +37,7 @@ function App() {
       style={{
         fontFamily: 'Lobster',
         backgroundImage:
-          'url("https://images.pexels.com/photos/1034662/pexels-photo-1034662.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")',
+          'url("https://i.pinimg.com/originals/85/76/e7/8576e72412abae39b4d2cfb74f81d999.gif")',
         width: windowDimensions.width,
         height: windowDimensions.height,
       }}
