@@ -38,3 +38,8 @@ body {
   margin: 15px;
   z-index: 1;
 }
+
+.popup-content {
+  padding: 0 !important;
+  width: auto !important;
+}

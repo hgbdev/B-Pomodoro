@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react';
 import HomeScreen from './UI_Components/HomeScreen';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'reactjs-popup/dist/index.css';
-
-const electron = window.require('electron');
-const ipcRenderer = electron.ipcRenderer;
 
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
@@ -21,8 +17,6 @@ function App() {
   );
 
   useEffect(() => {
-    ipcRenderer.send('asynchronous-message', 'ping');
-
     function handleResize() {
       setWindowDimensions(getWindowDimensions());
     }
