@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-require('./database');
+const { sequelize } = require('./database');
 
 require('dotenv').config();
 
@@ -26,4 +26,7 @@ function createWindow() {
   });
 }
 
-app.whenReady().then(createWindow);
+sequelize.sync().then(() => {
+  console.log("START ELECTRON APP");
+  app.whenReady().then(createWindow);
+});

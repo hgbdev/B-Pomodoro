@@ -13,8 +13,8 @@ var sequelize = new Sequelize('', '', '', {
   storage: './database.sqlite', // Chỉ dùng khi MS là SQLite
 });
 
-var Project = sequelize.define('Setting', {
-  name: Sequelize.STRING,
+module.exports.Setting = sequelize.define('Setting', {
+  name: { type: Sequelize.STRING, unique: true },
   background: Sequelize.STRING,
   pomodoro: Sequelize.INTEGER,
   s_break: Sequelize.INTEGER,
@@ -23,4 +23,4 @@ var Project = sequelize.define('Setting', {
   auto_start: Sequelize.BOOLEAN,
 });
 
-Project.sync();
+module.exports.sequelize = sequelize;
