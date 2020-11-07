@@ -15,7 +15,10 @@ function HomeScreen(props) {
   const {} = props;
   const [state, dispatch] = useContext(Context);
   useEffect(() => {
-    //ipcRenderer.send('asynchronous-message', { obj1: 'a', obj2: 'b' });
+    ipcRenderer.send('react-message', { event: 'GET_DATA' });
+    ipcRenderer.on('electron-reply', (e, arg) => {
+      console.log(arg);
+    });
     console.log(state.isOpenSetting);
   }, [state.isOpenSetting]);
 

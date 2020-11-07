@@ -1,6 +1,8 @@
+const { log } = require('console');
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-require('./database');
+const controller = require('./controller');
+const { sequelize } = require('./database');
 
 require('dotenv').config();
 
@@ -20,10 +22,14 @@ function createWindow() {
   //win.setMenuBarVisibility(false);
   // In main process.
 
-  ipcMain.on('asynchronous-message', (event, arg) => {
-    console.log(arg); // prints "ping"
-    event.reply('asynchronous-reply', 'pong');
+  ipcMain.on('react-message', async (event, arg) => {
+    const res = await controller(arg.event, arg.data);
+    console.log(res);
+    event.reply('electron-reply', 'pong');
   });
 }
 
-app.whenReady().then(createWindow);
+sequelize.sync().then(() => {
+  console.log('START ELECTRON APP');
+  app.whenReady().then(createWindow);
+});
