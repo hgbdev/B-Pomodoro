@@ -21,19 +21,14 @@ function HomeScreen(props) {
 
   return (
     <>
-      <div
-        className="home-screen"
-        style={{ display: state.isOpenSetting ? 'none' : null }}
-        onClick={() => console.log('zxczxc')}
-      >
+      <PopupSettingComponent />
+      <div className="home-screen" onClick={() => console.log('zxczxc')}>
         <TimerComponent
           isStart={state.isStart}
           minute={state.time}
           stopTimer={() => dispatch(stopTimer())}
-        />{' '}
-        */}
+        />
         <MenuComponent />
-        <PopupSettingComponent />
       </div>
     </>
   );

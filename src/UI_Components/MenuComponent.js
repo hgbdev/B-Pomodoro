@@ -15,7 +15,7 @@ function MenuComponent(props) {
   const {} = props;
   const [state, dispatch] = useContext(Context);
   return (
-    <div className="menu-container" style={{ pointerEvents: 'auto' }}>
+    <div className="menu-container">
       {!state.isStart ? (
         <Button
           variant="secondary"

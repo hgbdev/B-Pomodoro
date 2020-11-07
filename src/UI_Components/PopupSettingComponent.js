@@ -13,6 +13,7 @@ import {
 } from 'react-bootstrap';
 import ColorPicker from 'rc-color-picker';
 import 'rc-color-picker/assets/index.css';
+import { Panel as ColorPickerPanel } from 'rc-color-picker';
 
 function PopupSettingComponent(props) {
   const {} = props;
@@ -32,7 +33,7 @@ function PopupSettingComponent(props) {
       onHide={handleClose}
       centered
       backdrop={false}
-      style={{ opacity: 0.1 }}
+      onClick={() => console.log('xc')}
     >
       <Modal.Header closeButton>
         <Modal.Title>Setting</Modal.Title>
@@ -140,17 +141,12 @@ function PopupSettingComponent(props) {
               Font color:
             </Form.Label>
             <Col sm="7">
-              <div
-                style={{
-                  margin: '20px 20px 20px',
-                  textAlign: 'center',
-                }}
-              >
-                <ColorPicker
-                  animation="slide-up"
-                  color={'#36c'}
+              <div style={{ backgroundColor: '#ddd', padding: 20 }}>
+                <ColorPickerPanel
+                  enableAlpha={false}
+                  color={'#345679'}
                   onChange={changeHandler}
-                  style={{ position: 'absolute', zIndex: 10001 }}
+                  mode="RGB"
                 />
               </div>
             </Col>

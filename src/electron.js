@@ -17,7 +17,7 @@ function createWindow() {
 
   win.loadURL('http://localhost:3000');
   //win.loadFile(path.join(__dirname, './../build/index.html'));
-  win.setMenuBarVisibility(false);
+  //win.setMenuBarVisibility(false);
   // In main process.
 
   ipcMain.on('asynchronous-message', (event, arg) => {
