@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import HomeScreen from './UI_Components/HomeScreen';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Context } from './Context/context';
+import { getValueFomName } from './Utils/helpers';
 
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
@@ -12,6 +14,7 @@ function getWindowDimensions() {
 }
 
 function App() {
+  const [state, dispatch] = useContext(Context);
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
@@ -30,8 +33,10 @@ function App() {
       className="main-container"
       style={{
         fontFamily: 'Lobster',
-        backgroundImage:
-          'url("https://i.pinimg.com/originals/85/76/e7/8576e72412abae39b4d2cfb74f81d999.gif")',
+        backgroundImage: `url("${getValueFomName(
+          state.settings,
+          'background'
+        )}")`,
         width: windowDimensions.width,
         height: windowDimensions.height,
       }}

@@ -34,6 +34,7 @@ function PopupSettingComponent(props) {
       centered
       backdrop={false}
       onClick={() => console.log('xc')}
+      style={{ scrollbarWidth: 'none' }}
     >
       <Modal.Header closeButton>
         <Modal.Title>Setting</Modal.Title>
@@ -157,7 +158,14 @@ function PopupSettingComponent(props) {
               Border text color:
             </Form.Label>
             <Col sm="7">
-              <Form.Control placeholder="(Long Break Interval)" />
+              <div style={{ backgroundColor: '#ddd', padding: 20 }}>
+                <ColorPickerPanel
+                  enableAlpha={false}
+                  color={'#345679'}
+                  onChange={changeHandler}
+                  mode="RGB"
+                />
+              </div>
             </Col>
           </Form.Group>
         </Form>

@@ -26,17 +26,8 @@ function HomeScreen(props) {
     ipcRenderer.on('electron-reply', (e, arg) => {
       const { results } = arg;
       dispatch(getSettings({ settings: results }));
-      console.log(state);
     });
   }, []);
-
-  useEffect(() => {
-    console.log(
-      'LOG 2: ',
-      parseInt(getValueFomName(state.settings, 'pomodoro'))
-    );
-    setTime(parseInt(getValueFomName(state.settings, 'pomodoro')) || 0);
-  }, [state.settings]);
 
   return (
     <>
@@ -44,7 +35,7 @@ function HomeScreen(props) {
       <div className="home-screen">
         <TimerComponent
           isStart={state.isStart}
-          minute={time}
+          minute={parseInt(getValueFomName(state.settings, 'pomodoro')) || 0}
           stopTimer={() => dispatch(stopTimer())}
         />
         <button onClick={() => console.log(state)}>das</button>
