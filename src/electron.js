@@ -24,8 +24,8 @@ function createWindow() {
 
   ipcMain.on('react-message', async (event, arg) => {
     const res = await controller(arg.event, arg.data);
-    console.log(res);
-    event.reply('electron-reply', 'pong');
+    //console.log(res);
+    event.reply('electron-reply', res);
   });
 }
 

@@ -36,7 +36,7 @@ function TimerComponent(props) {
     }
 
     return () => clearInterval(timer);
-  }, [isStart]);
+  }, [isStart, minute]);
 
   useEffect(() => {
     stopTimer();

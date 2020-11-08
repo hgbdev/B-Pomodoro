@@ -1,16 +1,16 @@
 const { Settings } = require('./database');
 
 const EVENT = {
-  GET_DATA: 'GET_DATA',
+  GET_SETTINGS: 'GET_SETTINGS',
 };
 
 const controller = async (event, data) => {
   switch (event) {
-    case EVENT.GET_DATA: {
+    case EVENT.GET_SETTINGS: {
       try {
         const dataGetFromSQLite = await Settings.findAll();
-        console.log(dataGetFromSQLite[1]);
-        return { success: true, dataGetFromSQLite };
+        console.log(dataGetFromSQLite[1].name_setting);
+        return { success: true, results: dataGetFromSQLite };
       } catch (err) {
         return {
           success: false,

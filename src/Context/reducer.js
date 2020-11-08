@@ -5,6 +5,7 @@ export const initialState = {
   isStart: false,
   isOpenSetting: false,
   isOpenModal: false,
+  settings: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -40,6 +41,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isOpenSetting: false,
+      };
+    }
+
+    case ACTION_TYPE.GET_SETTINGS: {
+      const { settings } = action.payload;
+      return {
+        ...state,
+        settings,
       };
     }
 

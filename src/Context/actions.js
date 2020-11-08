@@ -4,6 +4,7 @@ export const ACTION_TYPE = {
   STOP_TIMER: 'STOP_TIMER',
   OPEN_SETTING: 'OPEN_SETIING',
   CLOSE_SETTING: 'CLOSE_SETIING',
+  GET_SETTINGS: 'GET_SETTINGS',
 };
 
 export function setTimer(payload) {
@@ -37,6 +38,13 @@ export function openSetting(payload) {
 export function closeSetting(payload) {
   return {
     type: ACTION_TYPE.CLOSE_SETTING,
+    payload,
+  };
+}
+
+export function getSettings(payload) {
+  return {
+    type: ACTION_TYPE.GET_SETTINGS,
     payload,
   };
 }
