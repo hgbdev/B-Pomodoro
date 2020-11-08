@@ -34,7 +34,7 @@ function PopupSettingComponent(props) {
       centered
       backdrop={false}
       onClick={() => console.log('xc')}
-      style={{ scrollbarWidth: 'none' }}
+      style={{ overflowY: 'hidden' }}
     >
       <Modal.Header closeButton>
         <Modal.Title>Setting</Modal.Title>
